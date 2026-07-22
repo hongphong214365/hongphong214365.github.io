@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentsTelegram — Hồng Phong</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="container">
+  <a class="skip-link" href="#main">Chuyển đến nội dung</a>
+  <main id="main">
+    <h1>AgentsTelegram</h1>
+    <p class="muted">Bot Telegram cho phép chạy file Python từ xa an toàn và có thể mở rộng.</p>
+
+    <h2>Giới thiệu chi tiết</h2>
+    <p>
+      AgentsTelegram là một bot Telegram viết bằng Python để gửi lệnh và chạy script trên máy tính của bạn từ xa. Mục tiêu: tự động hóa tác vụ, kiểm thử nhanh và quản lý script qua chat.
+    </p>
+
+    <h3>Tính năng chính</h3>
+    <ul>
+      <li>Nhận lệnh qua Telegram và thực thi script Python.</li>
+      <li>Gửi kết quả đầu ra hoặc lỗi về kênh telegram.</li>
+      <li>Hạn chế quyền truy cập vào một tài khoản telegram cụ thể bằng token và admin ID.</li>
+      <li>Dễ dàng cấu hình bằng các biến môi trường.</li>
+    </ul>
+
+    <h3>Điều kiện tiên quyết</h3>
+    <ul>
+      <li>Python phiên bản 3.10 trở lên.</li>
+      <li>Tài khoản Telegram cá nhân.</li>
+      <li>Telegram Bot Token (lấy từ @BotFather).</li>
+    </ul>
+
+    <h3>Hướng dẫn nhanh</h3>
+    <ol>
+      <li>Sao chép kho về máy: <code>git clone &lt;repo&gt;</code></li>
+      <li>Tạo môi trường và cài đặt phụ thuộc:
+        <br><em>Khuyến nghị dùng <strong>uv</strong>:</em> <code>uv venv && uv sync</code>
+        <br><em>Hoặc dùng Python tiêu chuẩn:</em> <code>python -m venv .venv && pip install -r requirements.txt</code>
+      </li>
+      <li>Thiết lập biến môi trường:
+        <p>Trên Windows (CMD):</p>
+        <code>set TELEGRAM_TOKEN=your_token_here</code><br>
+        <code>set TELEGRAM_ADMIN_ID=your_id_here</code>
+
+        <p>Trên Linux / macOS:</p>
+        <pre><code>export TELEGRAM_TOKEN="1234567890:AAExampleTokenHere"
+export TELEGRAM_ADMIN_ID="123456789"</code></pre>
+        <p><strong>Lưu ý:</strong> Bạn bắt buộc phải nhập chính xác tên biến môi trường <code>TELEGRAM_TOKEN</code> và <code>TELEGRAM_ADMIN_ID</code> thì bot mới có thể xác thực và hoạt động.</p>
+      </li>
+      <li>Chạy bot: <code>uv run main.py</code> hoặc <code>python main.py</code></li>
+    </ol>
+
+    <h3>Kiểm tra hoạt động</h3>
+    <p>Nếu cấu hình đúng, khi chạy bot bạn sẽ thấy thông báo: <code>agentsTelegram started successfully.</code></p>
+    <p>Bạn có thể kiểm tra bằng cách gửi lệnh cho bot:</p>
+    <ul>
+      <li>Gửi <code>/ping</code> -> Kết quả mong đợi: <code>online</code></li>
+    </ul>
+    <p><em>Lưu ý: Hầu hết các lệnh điều khiển hệ thống hiện tại đều yêu cầu quyền Admin (phải khớp với TELEGRAM_ADMIN_ID đã cấu hình).</em></p>
+
+    <p>Xem tài liệu đầy đủ tại <a href="https://github.com/hongphong214365/agentsTelegram/blob/main/README.md" target="_blank">đây</a></p>
+
+    <p><a href="/index.html" class="btn">Về trang chủ</a></p>
+    <hr>
+  </main>
+</body>
+</html>
