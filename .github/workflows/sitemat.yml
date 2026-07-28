@@ -1,0 +1,28 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main # Hoặc master
+
+jobs:
+  sitemap_job:
+    runs-on: ubuntu-latest
+    name: Generate Sitemap
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Generate Sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          baseUrl: https://hongphong214365.github.io/
+          ignore-files-at-root: '404.html'
+
+      - name: Commit and Push Sitemap
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "chore: auto-generate sitemap [skip ci]" || exit 0
+          git push
