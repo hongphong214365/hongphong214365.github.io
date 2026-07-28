@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hongphong214365.github.io/sitemap.xml
