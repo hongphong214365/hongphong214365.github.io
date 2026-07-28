@@ -3,26 +3,23 @@ name: Generate Sitemap
 on:
   push:
     branches:
-      - main # Hoặc master
+      - main
+
+# Cấp quyền ghi vào repository cho GitHub Actions (Sửa lỗi exit code 128)
+permissions:
+  contents: write
 
 jobs:
   sitemap_job:
     runs-on: ubuntu-latest
     name: Generate Sitemap
     steps:
-      - name: Checkout the repo
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          baseUrl: https://hongphong214365.github.io/
-          ignore-files-at-root: '404.html'
-
-      - name: Commit and Push Sitemap
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          git commit -m "chore: auto-generate sitemap [skip ci]" || exit 0
-          git push
+          base-url-path: 'https://hongphong214365.github.io/'
+          # Nếu bạn muốn loại trừ trang nào, dùng exclude-paths thay cho ignore-files-at-root:
+          # exclude-paths: '/test.html /admin/'
