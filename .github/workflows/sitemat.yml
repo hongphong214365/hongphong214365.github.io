@@ -5,6 +5,7 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
 # Cấp quyền ghi vào repository cho GitHub Actions (Sửa lỗi exit code 128)
 permissions:
   contents: write
