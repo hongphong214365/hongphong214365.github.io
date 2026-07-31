@@ -15,7 +15,7 @@ jobs:
     name: Generate Sitemap
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
