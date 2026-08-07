@@ -5,362 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Assistant - Trợ Lý Ảo Python</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        nav .logo {
-            color: #667eea;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        nav .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        nav .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        nav .nav-links a:hover {
-            color: #667eea;
-        }
-
-        /* Skip to content */
-        .skip-to-content {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #667eea;
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        }
-
-        .skip-to-content:focus {
-            top: 0;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: white;
-            border-radius: 10px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .hero .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        /* Main Content */
-        main {
-            background: white;
-            border-radius: 10px;
-            padding: 3rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
-
-        section h3 {
-            color: #764ba2;
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-top: 0;
-        }
-
-        /* Code Block */
-        .code-block {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .code-block code {
-            display: block;
-            white-space: pre;
-        }
-
-        /* Commands Section */
-        .command-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #764ba2;
-        }
-
-        .command-item strong {
-            color: #667eea;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .example {
-            background: #fff;
-            padding: 1rem;
-            margin-top: 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #333;
-        }
-
-        /* System Requirements */
-        .requirements-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .requirements-list li {
-            padding: 0.5rem 0;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .requirements-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        /* Installation Steps */
-        .steps {
-            counter-reset: step-counter;
-            list-style: none;
-            padding: 0;
-        }
-
-        .steps li {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-
-        .steps li:before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #667eea;
-            color: white;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-top: 3px solid #667eea;
-        }
-
-        footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .cta-buttons {
-                flex-direction: column;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Table of Contents */
-        .toc {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .toc h3 {
-            margin-top: 0;
-            color: #667eea;
-        }
-
-        .toc ul {
-            list-style-position: inside;
-            padding-left: 0;
-        }
-
-        .toc a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .toc a:hover {
-            text-decoration: underline;
-        }
+        /* (Kept original styles for layout; minor color choices left as-is to reuse style.css where possible) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        nav { background-color: rgba(0,0,0,0.8); padding: 1rem 2rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+        nav .logo { color: #667eea; font-size:1.2rem; font-weight:bold; text-decoration:none; }
+        nav .nav-links { display:flex; gap:1rem; list-style:none; }
+        nav .nav-links a { color:#fff; text-decoration:none; }
+        .container { max-width:1200px; margin:0 auto; padding:2rem; }
+        .hero { background:white; border-radius:10px; padding:2.5rem 1.5rem; text-align:center; margin-bottom:2rem; }
+        .hero h1 { font-size:2rem; color:#667eea; }
+        .btn { padding:8px 18px; border-radius:6px; text-decoration:none; display:inline-block; }
+        .btn-primary { background:#667eea; color:#fff; }
+        .btn-secondary { background:#fff; color:#667eea; border:2px solid #667eea; }
+        main { background:white; border-radius:10px; padding:2rem; box-shadow:0 5px 20px rgba(0,0,0,0.1); }
+        section { margin-bottom:1.5rem; }
+        section h2 { color:#667eea; margin-bottom:0.75rem; }
+        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+        .feature-card { background:#f8f9fa; padding:1rem; border-radius:8px; }
+        .command-item { background:#f8f9fa; padding:1rem; border-radius:6px; margin-bottom:0.75rem; }
+        .requirements-list { list-style:none; padding-left:0; }
+        .skip-to-content { position:absolute; left:0; top:-40px; background:#667eea; color:#fff; padding:8px; }
+        .skip-to-content:focus { top:0; }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Bỏ qua đến nội dung chính</a>
 
-    <!-- Navigation -->
     <nav>
         <a href="../index.html" class="logo">🏠 Trang Chủ</a>
         <ul class="nav-links">
@@ -372,260 +43,108 @@
     </nav>
 
     <div class="container">
-        <!-- Hero Section -->
         <section class="hero">
             <h1>🎤 Voice Assistant</h1>
-            <p>Trợ lý ảo thông minh bằng giọng nói - Viết bằng Python</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/hongphong214365/Voice-Assistant" class="btn btn-primary">Xem Trên GitHub</a>
-                <a href="#installation" class="btn btn-secondary">Hướng Dẫn Cài Đặt</a>
+            <p style="margin:0.5rem 0; max-width:720px; margin-left:auto; margin-right:auto;">Trợ lý giọng nói nhỏ gọn viết bằng Python — đọc giờ/ngày, trả lời tiếng Việt &amp; tiếng Anh (còn hạn chế), mở website và ứng dụng theo cấu hình JSON.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;">
+                <a href="https://github.com/hongphong214365/Voice-Assistant" class="btn btn-primary" target="_blank">Xem trên GitHub</a>
+                <a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" class="btn btn-secondary" target="_blank">Xem README</a>
+                <a href="https://github.com/hongphong214365/Voice-Assistant/issues" class="btn" style="background:#ffeeba; color:#333; border-radius:6px;">Báo lỗi / Góp ý</a>
             </div>
         </section>
 
         <main id="main-content">
-            <!-- Table of Contents -->
-            <div class="toc">
-                <h3>📑 Mục Lục</h3>
-                <ul>
-                    <li><a href="#features">Tính Năng</a></li>
-                    <li><a href="#requirements">Yêu Cầu Hệ Thống</a></li>
-                    <li><a href="#installation">Cài Đặt</a></li>
-                    <li><a href="#usage">Cách Sử Dụng</a></li>
-                    <li><a href="#commands">Các Lệnh Hỗ Trợ</a></li>
-                    <li><a href="#troubleshooting">Xử Lý Sự Cố</a></li>
-                </ul>
-            </div>
-
-            <!-- Features Section -->
             <section id="features">
-                <h2>✨ Tính Năng</h2>
+                <h2>✨ Tính Năng chính</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <h3>🎧 Nhận Diện Giọng Nói</h3>
-                        <p>Chuyển giọng nói thành văn bản với độ chính xác cao</p>
+                        <h3>⏰ Đọc giờ &amp; ngày</h3>
+                        <p>Hỏi giờ, hỏi ngày — trợ lý trả lời bằng giọng nói hoặc văn bản.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>🔊 Phản Hồi Bằng Giọng</h3>
-                        <p>Trợ lý phản hồi bằng tổng hợp giọng nói tự nhiên</p>
+                        <h3>🌐 Đa ngôn ngữ (VN / EN)</h3>
+                        <p>Hỗ trợ Tiếng Việt và Tiếng Anh (tiếng Anh còn hạn chế).</p>
                     </div>
                     <div class="feature-card">
-                        <h3>⚙️ Lệnh Thông Minh</h3>
-                        <p>Xử lý các lệnh đơn giản và phức tạp</p>
+                        <h3>🔗 Mở Website &amp; Ứng dụng</h3>
+                        <p>Mở trang web hoặc chương trình theo danh sách trong data/*.json — dễ chỉnh sửa.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>🌐 Đa Ngôn Ngữ</h3>
-                        <p>Hỗ trợ Tiếng Việt và Tiếng Anh</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🎯 Mở Rộng Dễ Dàng</h3>
-                        <p>Kiến trúc mô-đun giúp dễ dàng thêm tính năng</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🔄 Chạy Liên Tục</h3>
-                        <p>Lặp vòng nghe không ngừng cho đến khi thoát</p>
+                        <h3>🔧 Tùy chỉnh bằng JSON</h3>
+                        <p>Danh sách website và ứng dụng có thể chỉnh trong data/websites.json và data/apps.json.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- System Requirements -->
-            <section id="requirements">
-                <h2>💻 Yêu Cầu Hệ Thống</h2>
-                <ul class="requirements-list">
-                    <li>Windows 10 trở lên</li>
-                    <li>Python 3.11 hoặc mới hơn</li>
-                    <li>Micrô hoạt động bình thường</li>
-                    <li>Kết nối Internet (cho nhận dạng giọng nói và TTS)</li>
-                </ul>
-            </section>
-
-            <!-- Installation Section -->
             <section id="installation">
-                <h2>📥 Cài Đặt</h2>
-
-                <h3>Bước 1: Clone Repository</h3>
-                <div class="code-block">
-                    <code>git clone https://github.com/hongphong214365/Voice-Assistant.git
-cd Voice-Assistant</code>
-                </div>
-
-                <h3>Bước 2: Cài Đặt Thư Viện Phụ Thuộc</h3>
-                <p><strong>Sử dụng uv (Được khuyến nghị):</strong></p>
-                <div class="code-block">
-                    <code>uv sync</code>
-                </div>
-
-                <p style="margin-top: 1rem;"><strong>Hoặc sử dụng pip:</strong></p>
-                <div class="code-block">
-                    <code>pip install -r requirements.txt</code>
-                </div>
-
-                <h3>Bước 3: Chạy Trợ Lý</h3>
-                <div class="code-block">
-                    <code>uv run main.py</code>
-                </div>
-
-                <p style="margin-top: 1rem;">Hoặc:</p>
-                <div class="code-block">
-                    <code>python main.py</code>
-                </div>
+                <h2>📥 Cài đặt &amp; Chạy nhanh</h2>
+                <p>Clone repo, cài phụ thuộc và chạy:</p>
+                <pre style="background:#f4f4f4;padding:0.75rem;border-radius:6px;overflow:auto;">git clone https://github.com/hongphong214365/Voice-Assistant.git
+cd Voice-Assistant
+# Khuyến nghị
+uv sync
+uv run main.py
+# hoặc
+pip install -r requirements.txt
+python main.py</pre>
             </section>
 
-            <!-- Usage Section -->
-            <section id="usage">
-                <h2>🚀 Cách Sử Dụng</h2>
-
-                <h3>Ví Dụ Nhanh</h3>
-                <p>Khi chạy chương trình, bạn sẽ nhìn thấy:</p>
-                <div class="example">
-                    Chào bạn, tôi đã sẵn sàng.
-                </div>
-
-                <p style="margin-top: 1rem;">Nói lệnh của bạn:</p>
-                <ul class="steps">
-                    <li><strong>Nói:</strong> "Mấy giờ rồi?"<br><strong>Phản hồi:</strong> "Bây giờ là 17 giờ 5 phút"</li>
-                    <li><strong>Nói:</strong> "Mở Google"<br><strong>Phản hồi:</strong> "Đã mở google" (Trình duyệt sẽ mở)</li>
-                    <li><strong>Nói:</strong> "Tạm biệt"<br><strong>Phản hồi:</strong> "Tạm biệt bạn, cần giúp gì thì nói mình nhé" (Thoát)</li>
-                </ul>
-
-                <h3>⚙️ Cấu Hình Ngôn Ngữ</h3>
-                <p>Mở file <code>config.py</code> và thay đổi:</p>
-                <div class="code-block">
-                    <code># Tiếng Việt
-LANG = "vi-VN"
-
-# Tiếng Anh
-LANG = "en-US"</code>
-                </div>
-                <p style="margin-top: 1rem;">Rồi khởi động lại chương trình.</p>
-            </section>
-
-            <!-- Commands Section -->
             <section id="commands">
-                <h2>🎯 Các Lệnh Hỗ Trợ</h2>
+                <h2>🎯 Các lệnh cơ bản</h2>
 
                 <div class="command-item">
-                    <strong>🎤 Xin Chào (Greeting)</strong>
-                    <p>Người dùng: "Xin chào" / "Hello"</p>
-                    <div class="example">Trợ lý: Chào bạn / Hello</div>
+                    <strong>Xin chào</strong>
+                    <div class="example">Người dùng: “xin chào” — Trợ lý: “Chào bạn”</div>
                 </div>
 
                 <div class="command-item">
-                    <strong>👤 Hỏi Tên (Ask Name)</strong>
-                    <p>Người dùng: "Bạn tên gì?" / "What's your name?"</p>
-                    <div class="example">Trợ lý: Tôi là trợ lí ảo của bạn / I am your virtual assistant</div>
+                    <strong>Hỏi tên</strong>
+                    <div class="example">Người dùng: “bạn tên gì” — Trợ lý: “Tôi là trợ lí ảo của bạn”</div>
                 </div>
 
                 <div class="command-item">
-                    <strong>⏰ Hỏi Giờ (Ask Time)</strong>
-                    <p>Người dùng: "Mấy giờ rồi?" / "What time is it?"</p>
-                    <div class="example">Trợ lý: Bây giờ là 17 giờ 5 phút / It is 17:05</div>
+                    <strong>Hỏi giờ / ngày</strong>
+                    <div class="example">Người dùng: “mấy giờ rồi?” — Trợ lý đọc giờ hiện tại</div>
                 </div>
 
                 <div class="command-item">
-                    <strong>📅 Hỏi Ngày (Ask Date)</strong>
-                    <p>Người dùng: "Hôm nay là ngày mấy?" / "What's today's date?"</p>
-                    <div class="example">Trợ lý: Hôm nay là ngày 15 tháng 6 năm 2026 / Today is June 15, 2026</div>
+                    <strong>Mở website / ứng dụng</strong>
+                    <div class="example">Người dùng: “mở google” — Trợ lý sẽ mở trình duyệt theo cấu hình</div>
                 </div>
 
                 <div class="command-item">
-                    <strong>🌐 Mở Website</strong>
-                    <p>Người dùng: "Mở Google" / "Mở YouTube" / "Mở GitHub"</p>
-                    <div class="example">Trợ lý: Đã mở google (Trình duyệt sẽ mở website)</div>
+                    <strong>Tạm dừng nghe</strong>
+                    <div class="example">Người dùng: “tạm dừng nghe” — Trợ lý tạm dừng (không thoát). Nhấn Ctrl+Alt+A để tiếp tục.</div>
                 </div>
 
                 <div class="command-item">
-                    <strong>📱 Mở Ứng Dụng</strong>
-                    <p>Người dùng: "Mở Notepad" / "Mở Máy Tính" / "Mở File Explorer"</p>
-                    <div class="example">Trợ lý: Đã mở notepad (Ứng dụng sẽ khởi động)</div>
-                </div>
-
-                <div class="command-item">
-                    <strong>🔇 Tạm Dừng Nghe</strong>
-                    <p>Người dùng: "Tạm dừng nghe" / "Stop listening"</p>
-                    <div class="example">Trợ lý: Đã dừng nghe, ấn phím tắt để tiếp tục</div>
-                </div>
-
-                <div class="command-item">
-                    <strong>👋 Thoát (Exit)</strong>
-                    <p>Người dùng: "Tạm biệt" / "Bye" / "Kết thúc"</p>
-                    <div class="example">Trợ lý: Tạm biệt bạn, cần giúp gì thì nói mình nhé (Chương trình thoát)</div>
+                    <strong>Thoát</strong>
+                    <div class="example">Người dùng: “tạm biệt” — Trợ lý xác nhận và thoát chương trình.</div>
                 </div>
             </section>
 
-            <!-- Troubleshooting Section -->
-            <section id="troubleshooting">
-                <h2>🔧 Xử Lý Sự Cố</h2>
-
-                <div class="command-item">
-                    <strong>❌ Lỗi: No module named 'speech_recognition'</strong>
-                    <p><strong>Giải pháp:</strong></p>
-                    <div class="code-block">
-                        <code>uv add SpeechRecognition</code>
-                    </div>
-                    <p style="margin-top: 0.5rem;">Hoặc:</p>
-                    <div class="code-block">
-                        <code>pip install SpeechRecognition</code>
-                    </div>
-                </div>
-
-                <div class="command-item">
-                    <strong>❌ Lỗi: No module named 'sounddevice'</strong>
-                    <p><strong>Giải pháp:</strong></p>
-                    <div class="code-block">
-                        <code>pip install sounddevice</code>
-                    </div>
-                </div>
-
-                <div class="command-item">
-                    <strong>❌ Lỗi: Permission denied: audio/Voice.mp3</strong>
-                    <p><strong>Nguyên nhân:</strong> Tệp âm thanh vẫn đang được sử dụng.</p>
-                    <p><strong>Giải pháp:</strong> Đảm bảo pygame đã phát xong tệp trước khi xóa hoặc tạo lại.</p>
-                </div>
-
-                <div class="command-item">
-                    <strong>❌ Lỗi: UnknownValueError</strong>
-                    <p><strong>Nguyên nhân:</strong> Trình nhận dạng không hiểu được âm thanh.</p>
-                    <p><strong>Giải pháp:</strong></p>
-                    <ul class="requirements-list">
-                        <li>Nói rõ ràng hơn</li>
-                        <li>Giảm tiếng ồn xung quanh</li>
-                        <li>Tăng thời lượng ghi âm</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- License Section -->
-            <section>
-                <h2>📜 Giấy Phép</h2>
-                <p>Dự án này được cấp phép dưới <strong>MIT License</strong>.</p>
-                <p style="margin-top: 1rem;"><strong>⚠️ Lưu ý Bảo Mật:</strong></p>
+            <section id="audio-requirements">
+                <h2>🔊 Yêu cầu âm thanh (khi dùng file)</h2>
                 <ul class="requirements-list">
-                    <li>Tệp <code>record.wav</code> chứa giọng nói thực của bạn</li>
-                    <li>Đã loại trừ khỏi <code>.gitignore</code> nhưng vẫn cần kiểm tra</li>
-                    <li>Không lưu trữ mật khẩu hoặc thông tin nhạy cảm trong code</li>
-                    <li>Sử dụng biến môi trường cho API keys và tokens</li>
+                    <li>Định dạng: WAV</li>
+                    <li>Tên file phải khớp với cấu hình (ví dụ: record.wav)</li>
+                    <li>Sample rate: 44100 Hz</li>
                 </ul>
             </section>
 
-            <!-- Future Plans -->
-            <section>
-                <h2>🎯 Kế Hoạch Tương Lai</h2>
-                <ul class="requirements-list">
-                    <li>Đọc thông tin thời tiết</li>
-                    <li>Hỗ trợ từ kích hoạt (Wake word)</li>
-                    <li>Tích hợp AI</li>
-                </ul>
+            <section id="notes">
+                <h2>⚠️ Lưu ý</h2>
+                <p>Hiện tại bot vẫn đang trong giai đoạn phát triển và chạy trong terminal — chưa có giao diện đồ họa (UI). Có thể còn lỗi hoặc các hành vi chưa mong muốn.</p>
+                <p>Nếu gặp vấn đề, vui lòng báo lỗi tại: <a href="https://github.com/hongphong214365/Voice-Assistant/issues" target="_blank">Issues</a>.</p>
+                <p>Trang này ưu tiên cung cấp thông tin ngắn gọn cho người muốn cài/dùng. Thông tin chi tiết hơn (tài liệu kỹ thuật, hướng dẫn sâu) có trong <a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank">README</a>.</p>
+                <p>Đã tối ưu văn bản cho trình đọc NVDA; bố cục và style dùng lại file style.css của trang chính để đảm bảo tương phản và truy cập.</p>
             </section>
+
         </main>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>
-            <a href="https://github.com/hongphong214365/Voice-Assistant" target="_blank">Repository GitHub</a> | 
-            <a href="../index.html">Trang Chủ</a>
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">Made with ❤️ by hongphong214365</p>
+    <footer style="text-align:center; padding:1rem 0; margin-top:1rem; color:#fff; background:rgba(0,0,0,0.6);">
+        <p style="margin:0;"><a href="https://github.com/hongphong214365/Voice-Assistant" target="_blank" style="color:#fff; text-decoration:underline;">Repository GitHub</a> | <a href="../index.html" style="color:#fff; text-decoration:underline;">Trang Chủ</a></p>
     </footer>
 </body>
 </html>
