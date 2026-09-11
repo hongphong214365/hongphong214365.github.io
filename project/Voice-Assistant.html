@@ -47,7 +47,7 @@
     <div class="container">
         <section class="hero">
             <h1>🎤 Voice Assistant</h1>
-            <p style="margin:0.5rem 0; max-width:720px; margin-left:auto; margin-right:auto;">Trợ lý giọng nói nhỏ gọn viết bằng Python — đọc giờ/ngày, trả lời tiếng Việt &amp; tiếng Anh (còn hạn chế), mở website và ứng dụng theo cấu hình JSON.</p>
+            <p style="margin:0.5rem 0; max-width:720px; margin-left:auto; margin-right:auto;">Trợ lý giọng nói cơ bản, viết bằng Python .</p>
             <div style="margin-top:1rem; display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;">
                 <a href="https://github.com/hongphong214365/Voice-Assistant" class="btn btn-primary" target="_blank">Xem trên GitHub</a>
                 <a href="https://github.com/hongphong214365/Voice-Assistant/issues" class="btn" style="background:#ffeeba; color:#333; border-radius:6px;">Báo lỗi / Góp ý</a>
@@ -60,7 +60,7 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <h3>⏰ Đọc giờ &amp; ngày</h3>
-                        <p>Hỏi giờ, hỏi ngày — trợ lý trả lời bằng giọng nói hoặc văn bản.</p>
+                        <p>Hỏi giờ, hỏi ngày — trợ lý trả lời bằng giọng nói.</p>
                     </div>
                     <div class="feature-card">
                         <h3>🌐 Đa ngôn ngữ (VN / EN)</h3>
@@ -82,7 +82,8 @@
                 <p>Clone repo, cài phụ thuộc và chạy:</p>
                 <pre style="background:#f4f4f4;padding:0.75rem;border-radius:6px;overflow:auto;">git clone https://github.com/hongphong214365/Voice-Assistant.git
 cd Voice-Assistant
-# Khuyến nghị
+# Khuyến nghị dùng uv
+uv venv
 uv sync
 uv run main.py
 # hoặc
@@ -110,7 +111,7 @@ python main.py</pre>
 
                 <div class="command-item">
                     <strong>Mở website / ứng dụng</strong>
-                    <div class="example">Người dùng: “mở google” — Trợ lý sẽ mở trình duyệt theo cấu hình</div>
+                    <div class="example">Người dùng: “mở google” — Trợ lý sẽ mở website tên google bằng trình duyệt theo cấu hình</div>
                 </div>
 
                 <div class="command-item">
@@ -125,10 +126,10 @@ python main.py</pre>
             </section>
 
             <section id="audio-requirements">
-                <h2>🔊 Yêu cầu âm thanh (khi dùng file)</h2>
+                <h2>🔊 Yêu cầu âm thanh (Khi muốn đổi hiệu ứng âm thanh, có trong tài liệu chi tiết.)</h2>
                 <ul class="requirements-list">
                     <li>Định dạng: WAV</li>
-                    <li>Tên file phải khớp với cấu hình (ví dụ: record.wav)</li>
+                    <li>Tên file phải khớp với cấu hình (ví dụ: START_SOUND.wav)</li>
                     <li>Sample rate: 44100 Hz</li>
                 </ul>
             </section>
@@ -137,7 +138,7 @@ python main.py</pre>
                 <h2>⚠️ Lưu ý</h2>
                 <p>Hiện tại bot vẫn đang trong giai đoạn phát triển và chạy trong terminal — chưa có giao diện đồ họa (UI). Có thể còn lỗi hoặc các hành vi chưa mong muốn.</p>
                 <p>Nếu gặp vấn đề, vui lòng báo lỗi tại: <a href="https://github.com/hongphong214365/Voice-Assistant/issues" target="_blank">Issues</a>.</p>
-                <p>Trang này ưu tiên cung cấp thông tin ngắn gọn cho người muốn cài/dùng. Thông tin chi tiết hơn (tài liệu kỹ thuật, hướng dẫn sâu) có trong <a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank">README</a>.</p>
+                <p>Nếu muốn có thêm các phương thức cài đặt, thông tin xử lí sự Cố,V.V hãy ấn vào đây.<a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank">README</a>.</p>
                 <p>Đã tối ưu văn bản cho trình đọc NVDA; bố cục và style dùng lại file style.css của trang chính để đảm bảo tương phản và truy cập.</p>
             </section>
 
