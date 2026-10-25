@@ -3,60 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Assistant - Trợ Lý Ảo Python</title>
-    <style>
-        /* (Kept original styles for layout; minor color choices left as-is to reuse style.css where possible) */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
-        nav { background-color: rgba(0,0,0,0.8); padding: 1rem 2rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
-        nav .logo { color: #667eea; font-size:1.2rem; font-weight:bold; text-decoration:none; }
-        nav .nav-links { display:flex; gap:1rem; list-style:none; }
-        nav .nav-links a { color:#fff; text-decoration:none; }
-        .container { max-width:1200px; margin:0 auto; padding:2rem; }
-        .hero { background:white; border-radius:10px; padding:2.5rem 1.5rem; text-align:center; margin-bottom:2rem; }
-        .hero h1 { font-size:2rem; color:#667eea; }
-        .btn { padding:8px 18px; border-radius:6px; text-decoration:none; display:inline-block; }
-        .btn-primary { background:#667eea; color:#fff; }
-        .btn-secondary { background:#fff; color:#667eea; border:2px solid #667eea; }
-        main { background:white; border-radius:10px; padding:2rem; box-shadow:0 5px 20px rgba(0,0,0,0.1); }
-        section { margin-bottom:1.5rem; }
-        section h2 { color:#667eea; margin-bottom:0.75rem; }
-        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
-        .feature-card { background:#f8f9fa; padding:1rem; border-radius:8px; }
-        .command-item { background:#f8f9fa; padding:1rem; border-radius:6px; margin-bottom:0.75rem; }
-        .requirements-list { list-style:none; padding-left:0; }
-        .skip-to-content { position:absolute; left:0; top:-40px; background:#667eea; color:#fff; padding:8px; }
-        .skip-to-content:focus { top:0; }
-        .readme-footer { text-align:center; margin-top:1rem; }
-        .readme-footer a { display:inline-block; margin-top:0.5rem; padding:8px 14px; background:#fff; color:#667eea; border-radius:6px; text-decoration:none; border:1px solid rgba(0,0,0,0.05); }
-    </style>
+    <title>Voice Assistant – Trợ Lý Giọng Nói Python | Hồng Phong</title>
+    <meta name="description" content="Voice Assistant: trợ lý giọng nói cơ bản viết bằng Python. Hỗ trợ tiếng Việt, mở website, đọc giờ và nhiều tính năng khác.">
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-    <a href="#main-content" class="skip-to-content">Bỏ qua đến nội dung chính</a>
+<body class="project-page-body">
 
-    <nav>
-        <a href="../index.html" class="logo">🏠 Trang Chủ</a>
-        <ul class="nav-links">
+    <a href="#main-content" class="skip-link">Bỏ qua đến nội dung chính</a>
+
+    <!-- Navigation -->
+    <nav class="project-nav" aria-label="Điều hướng trang Voice Assistant">
+        <a href="/index.html" class="project-nav-logo">🏠 Trang Chủ</a>
+        <ul class="project-nav-links" role="list">
             <li><a href="#features">Tính Năng</a></li>
             <li><a href="#installation">Cài Đặt</a></li>
             <li><a href="#commands">Lệnh</a></li>
-            <li><a href="https://github.com/hongphong214365/Voice-Assistant" target="_blank">📦 Repository</a></li>
+            <li><a href="https://github.com/hongphong214365/Voice-Assistant" target="_blank" rel="noopener">📦 Repository</a></li>
         </ul>
     </nav>
 
-    <div class="container">
-        <section class="hero">
-            <h1>🎤 Voice Assistant</h1>
-            <p style="margin:0.5rem 0; max-width:720px; margin-left:auto; margin-right:auto;">Trợ lý giọng nói cơ bản, viết bằng Python .</p>
-            <div style="margin-top:1rem; display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;">
-                <a href="https://github.com/hongphong214365/Voice-Assistant" class="btn btn-primary" target="_blank">Xem trên GitHub</a>
-                <a href="https://github.com/hongphong214365/Voice-Assistant/issues" class="btn" style="background:#ffeeba; color:#333; border-radius:6px;">Báo lỗi / Góp ý</a>
+    <div class="project-container">
+
+        <!-- Hero -->
+        <section class="project-hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">🎤 Voice Assistant</h1>
+            <p>Trợ lý giọng nói cơ bản, viết bằng Python — hỗ trợ tiếng Việt.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/hongphong214365/Voice-Assistant" class="btn" target="_blank" rel="noopener">Xem trên GitHub</a>
+                <a href="https://github.com/hongphong214365/Voice-Assistant/issues" class="btn btn-outline" target="_blank" rel="noopener">Báo lỗi / Góp ý</a>
             </div>
         </section>
 
-        <main id="main-content">
-            <section id="features">
-                <h2>✨ Tính Năng chính</h2>
+        <!-- Main content -->
+        <main id="main-content" class="project-main">
+
+            <!-- Features -->
+            <section id="features" aria-labelledby="features-heading">
+                <h2 id="features-heading">✨ Tính Năng Chính</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <h3>⏰ Đọc giờ &amp; ngày</h3>
@@ -68,90 +51,117 @@
                     </div>
                     <div class="feature-card">
                         <h3>🔗 Mở Website &amp; Ứng dụng</h3>
-                        <p>Mở trang web hoặc chương trình theo danh sách trong data/*.json — dễ chỉnh sửa.</p>
+                        <p>Mở trang web hoặc chương trình theo danh sách trong <code>data/*.json</code> — dễ chỉnh sửa.</p>
                     </div>
                     <div class="feature-card">
                         <h3>🔧 Tùy chỉnh bằng JSON</h3>
-                        <p>Danh sách website và ứng dụng có thể chỉnh trong data/websites.json và data/apps.json.</p>
+                        <p>Danh sách website và ứng dụng có thể chỉnh trong <code>data/websites.json</code> và <code>data/apps.json</code>.</p>
                     </div>
                 </div>
             </section>
 
-            <section id="installation">
-                <h2>📥 Cài đặt &amp; Chạy nhanh</h2>
+            <!-- Installation -->
+            <section id="installation" aria-labelledby="install-heading">
+                <h2 id="install-heading">📥 Cài Đặt &amp; Chạy Nhanh</h2>
                 <p>Clone repo, cài phụ thuộc và chạy:</p>
-                <pre style="background:#f4f4f4;padding:0.75rem;border-radius:6px;overflow:auto;">git clone https://github.com/hongphong214365/Voice-Assistant.git
+                <div class="code-block">
+                    <code>git clone https://github.com/hongphong214365/Voice-Assistant.git
 cd Voice-Assistant
+
 # Khuyến nghị dùng uv
 uv venv
 uv sync
 uv run main.py
-# hoặc
+
+# hoặc pip tiêu chuẩn
 pip install -r requirements.txt
-python main.py</pre>
+python main.py</code>
+                </div>
             </section>
 
-            <section id="commands">
-                <h2>🎯 Các lệnh cơ bản</h2>
+            <!-- Commands -->
+            <section id="commands" aria-labelledby="commands-heading">
+                <h2 id="commands-heading">🎯 Các Lệnh Cơ Bản</h2>
 
                 <div class="command-item">
                     <strong>Xin chào</strong>
-                    <div class="example">Người dùng: “xin chào” — Trợ lý: “Chào bạn”</div>
+                    <div class="example">Người dùng: "xin chào" — Trợ lý: "Chào bạn"</div>
                 </div>
 
                 <div class="command-item">
                     <strong>Hỏi tên</strong>
-                    <div class="example">Người dùng: “bạn tên gì” — Trợ lý: “Tôi là trợ lí ảo của bạn”</div>
+                    <div class="example">Người dùng: "bạn tên gì" — Trợ lý: "Tôi là trợ lí ảo của bạn"</div>
                 </div>
 
                 <div class="command-item">
                     <strong>Hỏi giờ / ngày</strong>
-                    <div class="example">Người dùng: “mấy giờ rồi?” — Trợ lý đọc giờ hiện tại</div>
+                    <div class="example">Người dùng: "mấy giờ rồi?" — Trợ lý đọc giờ hiện tại</div>
                 </div>
 
                 <div class="command-item">
                     <strong>Mở website / ứng dụng</strong>
-                    <div class="example">Người dùng: “mở google” — Trợ lý sẽ mở website tên google bằng trình duyệt theo cấu hình</div>
+                    <div class="example">Người dùng: "mở google" — Trợ lý sẽ mở website tên google bằng trình duyệt theo cấu hình</div>
                 </div>
 
                 <div class="command-item">
                     <strong>Tạm dừng nghe</strong>
-                    <div class="example">Người dùng: “tạm dừng nghe” — Trợ lý tạm dừng (không thoát). Nhấn Ctrl+Alt+A để tiếp tục.</div>
+                    <div class="example">Người dùng: "tạm dừng nghe" — Trợ lý tạm dừng (không thoát). Nhấn Ctrl+Alt+A để tiếp tục.</div>
                 </div>
 
                 <div class="command-item">
                     <strong>Thoát</strong>
-                    <div class="example">Người dùng: “tạm biệt” — Trợ lý xác nhận và thoát chương trình.</div>
+                    <div class="example">Người dùng: "tạm biệt" — Trợ lý xác nhận và thoát chương trình.</div>
                 </div>
             </section>
 
-            <section id="audio-requirements">
-                <h2>🔊 Yêu cầu âm thanh (Khi muốn đổi hiệu ứng âm thanh, có trong tài liệu chi tiết.)</h2>
+            <!-- Audio Requirements -->
+            <section id="audio-requirements" aria-labelledby="audio-heading">
+                <h2 id="audio-heading">🔊 Yêu Cầu Âm Thanh</h2>
+                <p>Khi muốn đổi hiệu ứng âm thanh, xem thêm tài liệu chi tiết.</p>
                 <ul class="requirements-list">
                     <li>Định dạng: WAV</li>
-                    <li>Tên file phải khớp với cấu hình (ví dụ: START_SOUND.wav)</li>
+                    <li>Tên file phải khớp với cấu hình (ví dụ: <code>START_SOUND.wav</code>)</li>
                     <li>Sample rate: 44100 Hz</li>
                 </ul>
             </section>
 
-            <section id="notes">
-                <h2>⚠️ Lưu ý</h2>
-                <p>Hiện tại bot vẫn đang trong giai đoạn phát triển và chạy trong terminal — chưa có giao diện đồ họa (UI). Có thể còn lỗi hoặc các hành vi chưa mong muốn.</p>
-                <p>Nếu gặp vấn đề, vui lòng báo lỗi tại: <a href="https://github.com/hongphong214365/Voice-Assistant/issues" target="_blank">Issues</a>.</p>
-                <p>Nếu muốn có thêm các phương thức cài đặt, thông tin xử lí sự Cố, V.V. Hãy ấn vào đây:<a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank">README</a>.</p>
+            <!-- Notes -->
+            <section id="notes" aria-labelledby="notes-heading">
+                <h2 id="notes-heading">⚠️ Lưu Ý</h2>
+                <p>
+                    Hiện tại bot vẫn đang trong giai đoạn phát triển và chạy trong terminal —
+                    chưa có giao diện đồ họa (UI). Có thể còn lỗi hoặc các hành vi chưa mong muốn.
+                </p>
+                <p>
+                    Nếu gặp vấn đề, vui lòng báo lỗi tại:
+                    <a href="https://github.com/hongphong214365/Voice-Assistant/issues" target="_blank" rel="noopener">Issues trên GitHub</a>.
+                </p>
+                <p>
+                    Muốn xem thêm phương thức cài đặt, thông tin xử lý sự cố:
+                    <a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank" rel="noopener">README đầy đủ trên GitHub</a>.
+                </p>
             </section>
 
         </main>
 
-        <!-- README button near footer as requested -->
+        <!-- README link -->
         <div class="readme-footer">
-            <a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank" rel="noopener">Xem README (tài liệu chi tiết)</a>
+            <a href="https://github.com/hongphong214365/Voice-Assistant/blob/main/README.md" target="_blank" rel="noopener">
+                Xem README đầy đủ trên GitHub
+            </a>
         </div>
 
     </div>
 
-    <footer style="text-align:center; padding:1rem 0; margin-top:1rem; color:#fff; background:rgba(0,0,0,0.6);">
-        <p style="margin:0;"><a href="https://github.com/hongphong214365/Voice-Assistant" target="_blank" style="color:#fff; text-decoration:underline;">Repository GitHub</a> | <a href="../index.html" style="color:#fff; text-decoration:underline;">Trang Chủ</a></p>
+    <!-- Footer -->
+    <footer class="project-footer">
+        <p>
+            <a href="https://github.com/hongphong214365/Voice-Assistant" target="_blank" rel="noopener">Repository GitHub</a> |
+            <a href="/index.html">Trang Chủ</a>
+        </p>
+        <p>Made with ❤️ by hongphong214365</p>
     </footer>
+
+    <script src="/main.js" defer></script>
 </body>
 </html>

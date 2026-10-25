@@ -3,392 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgentsTelegram - Bot Telegram Chạy Python Từ Xa</title>
+    <title>AgentsTelegram – Bot Telegram Chạy Python Từ Xa | Hồng Phong</title>
+    <meta name="description" content="AgentsTelegram: bot Telegram viết bằng Python để gửi lệnh và chạy script trên máy tính từ xa. Hướng dẫn cài đặt, tính năng và mã nguồn.">
     <link rel="stylesheet" href="/style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 0;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        nav .logo {
-            color: #667eea;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        nav .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        nav .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        nav .nav-links a:hover {
-            color: #667eea;
-        }
-
-        /* Skip to content */
-        .skip-to-content {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #667eea;
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        }
-
-        .skip-to-content:focus {
-            top: 0;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: white;
-            border-radius: 10px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .hero .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        /* Main Content */
-        main {
-            background: white;
-            border-radius: 10px;
-            padding: 3rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-        }
-
-        section h3 {
-            color: #764ba2;
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-top: 0;
-        }
-
-        /* Code Block */
-        .code-block {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .code-block code {
-            display: block;
-            white-space: pre;
-        }
-
-        /* Commands Section */
-        .command-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #764ba2;
-        }
-
-        .command-item strong {
-            color: #667eea;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .example {
-            background: #fff;
-            padding: 1rem;
-            margin-top: 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #333;
-        }
-
-        /* System Requirements */
-        .requirements-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .requirements-list li {
-            padding: 0.5rem 0;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .requirements-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        /* Installation Steps */
-        .steps {
-            counter-reset: step-counter;
-            list-style: none;
-            padding: 0;
-        }
-
-        .steps li {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-
-        .steps li:before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #667eea;
-            color: white;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-top: 3px solid #667eea;
-        }
-
-        footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .cta-buttons {
-                flex-direction: column;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Table of Contents */
-        .toc {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .toc h3 {
-            margin-top: 0;
-            color: #667eea;
-        }
-
-        .toc ul {
-            list-style-position: inside;
-            padding-left: 0;
-        }
-
-        .toc a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .toc a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
-<body>
-    <a href="#main-content" class="skip-to-content">Bỏ qua đến nội dung chính</a>
+<body class="project-page-body">
+
+    <a href="#main-content" class="skip-link">Bỏ qua đến nội dung chính</a>
 
     <!-- Navigation -->
-    <nav>
-        <a href="../index.html" class="logo">🏠 Trang Chủ</a>
-        <ul class="nav-links">
+    <nav class="project-nav" aria-label="Điều hướng trang AgentsTelegram">
+        <a href="/index.html" class="project-nav-logo">🏠 Trang Chủ</a>
+        <ul class="project-nav-links" role="list">
             <li><a href="#introduction">Giới Thiệu</a></li>
             <li><a href="#features">Tính Năng</a></li>
             <li><a href="#requirements">Yêu Cầu</a></li>
             <li><a href="#installation">Cài Đặt</a></li>
             <li><a href="#testing">Kiểm Tra</a></li>
-            <li><a href="https://github.com/hongphong214365/agentsTelegram" target="_blank">📦 Repository</a></li>
+            <li><a href="https://github.com/hongphong214365/agentsTelegram" target="_blank" rel="noopener">📦 Repository</a></li>
         </ul>
     </nav>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>🤖 AgentsTelegram</h1>
-            <p>Bot Telegram cho phép chạy file Python từ xa an toàn và có thể mở rộng</p>
+    <div class="project-container">
+
+        <!-- Hero -->
+        <section class="project-hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">🤖 AgentsTelegram</h1>
+            <p>Bot Telegram cho phép chạy file Python từ xa — an toàn và có thể mở rộng</p>
             <div class="cta-buttons">
-                <a href="https://github.com/hongphong214365/agentsTelegram" class="btn btn-primary" target="_blank">Xem Trên GitHub</a>
-                <a href="#installation" class="btn btn-secondary">Hướng Dẫn Cài Đặt</a>
+                <a href="https://github.com/hongphong214365/agentsTelegram" class="btn" target="_blank" rel="noopener">Xem Trên GitHub</a>
+                <a href="#installation" class="btn btn-outline">Hướng Dẫn Cài Đặt</a>
             </div>
         </section>
 
-        <main id="main-content">
+        <!-- Main content -->
+        <main id="main-content" class="project-main">
+
             <!-- Table of Contents -->
-            <div class="toc">
+            <nav class="toc" aria-label="Mục lục trang">
                 <h3>📑 Mục Lục</h3>
                 <ul>
                     <li><a href="#introduction">Giới Thiệu Chi Tiết</a></li>
@@ -397,19 +49,20 @@
                     <li><a href="#installation">Hướng Dẫn Cài Đặt</a></li>
                     <li><a href="#testing">Kiểm Tra Hoạt Động</a></li>
                 </ul>
-            </div>
+            </nav>
 
-            <!-- Introduction Section -->
-            <section id="introduction">
-                <h2>📝 Giới Thiệu Chi Tiết</h2>
+            <!-- Introduction -->
+            <section id="introduction" aria-labelledby="intro-heading">
+                <h2 id="intro-heading">📝 Giới Thiệu Chi Tiết</h2>
                 <p>
-                    AgentsTelegram là một bot Telegram viết bằng Python để gửi lệnh và chạy script trên máy tính của bạn từ xa. Mục tiêu: tự động hóa tác vụ, kiểm thử nhanh và quản lý script qua chat.
+                    AgentsTelegram là một bot Telegram viết bằng Python để gửi lệnh và chạy script trên
+                    máy tính của bạn từ xa. Mục tiêu: tự động hóa tác vụ, kiểm thử nhanh và quản lý script qua chat.
                 </p>
             </section>
 
-            <!-- Features Section -->
-            <section id="features">
-                <h2>✨ Tính Năng Chính</h2>
+            <!-- Features -->
+            <section id="features" aria-labelledby="features-heading">
+                <h2 id="features-heading">✨ Tính Năng Chính</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <h3>🤖 Thực Thi Script</h3>
@@ -430,9 +83,9 @@
                 </div>
             </section>
 
-            <!-- System Requirements -->
-            <section id="requirements">
-                <h2>💻 Điều Kiện Tiên Quyết</h2>
+            <!-- Requirements -->
+            <section id="requirements" aria-labelledby="req-heading">
+                <h2 id="req-heading">💻 Điều Kiện Tiên Quyết</h2>
                 <ul class="requirements-list">
                     <li>Python phiên bản 3.10 trở lên.</li>
                     <li>Tài khoản Telegram cá nhân.</li>
@@ -440,9 +93,9 @@
                 </ul>
             </section>
 
-            <!-- Installation Section -->
-            <section id="installation">
-                <h2>📥 Hướng Dẫn Cài Đặt</h2>
+            <!-- Installation -->
+            <section id="installation" aria-labelledby="install-heading">
+                <h2 id="install-heading">📥 Hướng Dẫn Cài Đặt</h2>
 
                 <ol class="steps">
                     <li>
@@ -454,11 +107,11 @@ cd agentsTelegram</code>
                     </li>
                     <li>
                         <strong>Tạo Môi Trường và Cài Đặt Phụ Thuộc:</strong>
-                        <p style="margin-top: 0.5rem;"><em>Khuyến nghị dùng <strong>uv</strong>:</em></p>
+                        <p>Khuyến nghị dùng <strong>uv</strong>:</p>
                         <div class="code-block">
-                            <code>uv venv && uv sync</code>
+                            <code>uv venv &amp;&amp; uv sync</code>
                         </div>
-                        <p style="margin-top: 0.5rem;"><em>Hoặc dùng Python tiêu chuẩn:</em></p>
+                        <p>Hoặc dùng Python tiêu chuẩn:</p>
                         <div class="code-block">
                             <code>python -m venv .venv
 # Trên Windows:
@@ -471,15 +124,16 @@ pip install -r requirements.txt</code>
                     </li>
                     <li>
                         <strong>Thiết Lập Biến Môi Trường:</strong>
-                        <p style="margin-top: 0.5rem;">Bạn bắt buộc phải nhập chính xác tên biến môi trường <code>TELEGRAM_TOKEN</code> và <code>TELEGRAM_ADMIN_ID</code> thì bot mới có thể xác thực và hoạt động.</p>
-                        
-                        <p style="margin-top: 0.5rem;"><em>Trên Windows (CMD):</em></p>
+                        <p>
+                            Bạn bắt buộc phải nhập chính xác tên biến môi trường <code>TELEGRAM_TOKEN</code>
+                            và <code>TELEGRAM_ADMIN_ID</code> thì bot mới có thể xác thực và hoạt động.
+                        </p>
+                        <p>Trên Windows (CMD):</p>
                         <div class="code-block">
                             <code>set TELEGRAM_TOKEN=your_token_here
 set TELEGRAM_ADMIN_ID=your_id_here</code>
                         </div>
-
-                        <p style="margin-top: 0.5rem;"><em>Trên Linux / macOS:</em></p>
+                        <p>Trên Linux / macOS:</p>
                         <div class="code-block">
                             <code>export TELEGRAM_TOKEN="1234567890:AAExampleTokenHere"
 export TELEGRAM_ADMIN_ID="123456789"</code>
@@ -487,11 +141,11 @@ export TELEGRAM_ADMIN_ID="123456789"</code>
                     </li>
                     <li>
                         <strong>Khởi Chạy Bot:</strong>
-                        <p style="margin-top: 0.5rem;">Sử dụng <strong>uv</strong>:</p>
+                        <p>Sử dụng <strong>uv</strong>:</p>
                         <div class="code-block">
                             <code>uv run main.py</code>
                         </div>
-                        <p style="margin-top: 0.5rem;">Hoặc sử dụng Python tiêu chuẩn:</p>
+                        <p>Hoặc sử dụng Python tiêu chuẩn:</p>
                         <div class="code-block">
                             <code>python main.py</code>
                         </div>
@@ -499,39 +153,49 @@ export TELEGRAM_ADMIN_ID="123456789"</code>
                 </ol>
             </section>
 
-            <!-- Testing Section -->
-            <section id="testing">
-                <h2>🧪 Kiểm Tra Hoạt Động</h2>
+            <!-- Testing -->
+            <section id="testing" aria-labelledby="test-heading">
+                <h2 id="test-heading">🧪 Kiểm Tra Hoạt Động</h2>
                 <p>Nếu cấu hình đúng, khi chạy bot bạn sẽ thấy thông báo:</p>
-                <div class="example">
-                    agentsTelegram started successfully.
-                </div>
-                
-                <p style="margin-top: 1.5rem;">Bạn có thể kiểm tra bằng cách gửi lệnh cho bot:</p>
+                <div class="example">agentsTelegram started successfully.</div>
+
+                <p>Bạn có thể kiểm tra bằng cách gửi lệnh cho bot:</p>
                 <div class="command-item">
                     <strong>📡 Gửi Lệnh /ping</strong>
                     <p>Người dùng gửi: <code>/ping</code></p>
                     <div class="example">Kết quả mong đợi: online</div>
                 </div>
-                
-                <p style="margin-top: 1.5rem;"><strong>Lưu ý:</strong> Hầu hết các lệnh điều khiển hệ thống hiện tại đều yêu cầu quyền Admin (phải khớp với <code>TELEGRAM_ADMIN_ID</code> đã cấu hình).</p>
+
+                <p>
+                    <strong>Lưu ý:</strong> Hầu hết các lệnh điều khiển hệ thống hiện tại đều yêu cầu quyền Admin
+                    (phải khớp với <code>TELEGRAM_ADMIN_ID</code> đã cấu hình).
+                </p>
             </section>
 
-            <!-- Detailed Documentation -->
-            <section>
-                <h2>📜 Tài Liệu Chi Tiết</h2>
-                <p>Xem tài liệu đầy đủ tại <a href="https://github.com/hongphong214365/agentsTelegram/blob/main/README.md" target="_blank">đây</a>.</p>
+            <!-- Documentation -->
+            <section aria-labelledby="docs-heading">
+                <h2 id="docs-heading">📜 Tài Liệu Chi Tiết</h2>
+                <p>
+                    Xem tài liệu đầy đủ tại
+                    <a href="https://github.com/hongphong214365/agentsTelegram/blob/main/README.md" target="_blank" rel="noopener">
+                        README trên GitHub
+                    </a>.
+                </p>
             </section>
+
         </main>
+
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer class="project-footer">
         <p>
-            <a href="https://github.com/hongphong214365/agentsTelegram" target="_blank">Repository GitHub</a> | 
-            <a href="../index.html">Trang Chủ</a>
+            <a href="https://github.com/hongphong214365/agentsTelegram" target="_blank" rel="noopener">Repository GitHub</a> |
+            <a href="/index.html">Trang Chủ</a>
         </p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">Made with ❤️ by hongphong214365</p>
+        <p>Made with ❤️ by hongphong214365</p>
     </footer>
+
+    <script src="/main.js" defer></script>
 </body>
 </html>
