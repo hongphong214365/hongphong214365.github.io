@@ -1,84 +1,34 @@
-# Tasks – Tái cấu trúc Homepage & Cải thiện Dự án
+# Báo cáo tái cấu trúc website
 
-> Tạo ngày: 2026-10-25 | Tệp này là báo cáo tiến độ, **không xóa sau khi xong**.
+Cập nhật: 2026-10-25. Giữ lại tệp này làm checklist và báo cáo sau khi hoàn tất.
 
----
+## Trang chủ và nội dung
 
-## Commit 1 – Tái cấu trúc `index.html` (cấu trúc HTML thuần)
+- [x] Tái cấu trúc `index.html` với header, điều hướng chính, điều hướng mạng xã hội, main và footer.
+- [x] Thêm skip link, thứ bậc tiêu đề, tên landmark và nhãn biểu mẫu để hỗ trợ NVDA.
+- [x] Viết phần giới thiệu cá nhân về Python, tự động hóa và trải nghiệm dùng NVDA.
+- [x] Thêm Reddit, Facebook, TikTok, itch.io (ghi ITG), X và GitHub theo tên `hongphong214365`.
+- [x] Giữ các thẻ dự án và tải README của `hongphong214365/Du-an` vào trang.
+- [x] Có trạng thái tải README dành cho trình đọc màn hình và liên kết dự phòng khi GitHub không phản hồi.
+- [x] Escape nội dung README trước khi render; chỉ tạo liên kết từ URL HTTP(S).
+- [x] Thêm nút sao chép cho khối mã trong README và các trang dự án, kèm phương án dự phòng khi Clipboard API không dùng được.
 
-- [x] Thêm `<header>` với `<nav>` có aria-label
-- [x] Thêm liên kết mạng xã hội: Reddit, Facebook, TikTok, ITG (itch.io), X — tất cả `hongphong214365`
-- [x] Thêm phần "Giới thiệu" (`#about`) trong `<main>` — giới thiệu bản thân + NVDA
-- [x] Giữ phần Dự án nổi bật (`#projects`) với badge + nút GitHub riêng
-- [x] Thêm `<footer id="contact">` với thông tin liên hệ và form liên hệ
-- [x] Form dùng Formspree (AJAX) + honeypot chống spam
-- [x] Đảm bảo `<main id="main">`, skip-link, landmark đủ cho NVDA
-- [x] Kéo README từ GitHub API (`hongphong214365/Du-an`) và render tại chỗ
+## Giao diện và cấu trúc tệp
 
-## Commit 2 – Cập nhật `style.css` (tổng hợp, không pha HTML)
+- [x] Đưa kiểu dáng vào `style.css`, cải thiện bố cục, độ tương phản, focus, giao diện di động và giảm chuyển động.
+- [x] Rà các trang `*.html`; chuyển các thuộc tính `style` trong `404.html` sang class CSS.
+- [x] Giữ CSS và JavaScript trong tệp riêng, không thêm script hay style nội tuyến.
+- [x] Thêm liên hệ qua Gmail và form có label, xác thực trường bắt buộc cùng trường honeypot.
+- [x] Form mở ứng dụng email của khách với nội dung đã điền sẵn tới `hongphong0909.13@gmail.com`; không gửi dữ liệu đến endpoint bên thứ ba chưa được cấu hình.
 
-- [x] Gộp toàn bộ style dùng chung vào `style.css`
-- [x] Thêm: `.site-header`, `.nav-container`, `.social-list`, `.project-card`, `.project-list`
-- [x] Thêm: `.section-hero`, `.avatar`, `.hero-text`, `.hero-actions`
-- [x] Thêm: `.site-footer`, `.footer-inner`, `.contact-info`, `.footer-bottom`
-- [x] Thêm: styles cho project pages (`.project-page-body`, `.project-nav`, `.project-hero`, v.v.)
-- [x] Thêm: `.copy-btn` cho nút sao chép code
-- [x] Thêm: `.form-status`, `.form-group` cho form liên hệ
-- [x] Giữ: high-contrast, prefers-reduced-motion, focus-visible, skip-link
+## Commit và phát hành
 
-## Commit 3 – Tách CSS khỏi `project/*.html` + thêm `main.js`
+- [x] Rà nội dung ba commit có sẵn chưa push: `9e2fb88`, `02ebd7c`, `83d342b`.
+- [x] Hoàn thiện các mục rà soát HTML, CSS, JS và accessibility.
+- [x] Tạo commit hoàn tất và push các commit đang chờ lên `origin/main`.
 
-- [x] Tách toàn bộ `<style>` nội tuyến ra khỏi `project/agentsTelegram.html`
-- [x] Tách toàn bộ `<style>` nội tuyến ra khỏi `project/Voice-Assistant.html`
-- [x] Thêm `<link rel="stylesheet" href="/style.css">` vào cả hai
-- [x] Tạo `main.js` riêng biệt với:
-  - Fetch README từ `api.github.com/repos/hongphong214365/Du-an/readme`
-  - Render Markdown → HTML (parser tối giản, không cần CDN)
-  - Nút "Sao chép" (`copy-btn`) cho tất cả `<pre>` và `.code-block`
-  - AJAX submit form liên hệ qua Formspree
-- [x] Thêm `<script src="/main.js" defer>` vào tất cả trang
+## Ghi chú
 
-## Commit 4 – Kiểm tra & dọn dẹp cuối
-
-- [ ] Kiểm tra lại tất cả `*.html` — không còn inline style thừa (trừ những gì cực kỳ cần thiết)
-- [ ] Kiểm tra accessibility: skip-link đúng chỗ, aria-label đầy đủ, landmark rõ ràng
-- [ ] Git commit tổng kết
-
----
-
-## Ghi chú kỹ thuật
-
-### Mạng xã hội (tất cả là `hongphong214365`)
-| Nền tảng | URL |
-|---|---|
-| Reddit | https://www.reddit.com/user/hongphong214365 |
-| Facebook | https://www.facebook.com/hongphong214365 |
-| TikTok | https://www.tiktok.com/@hongphong214365 |
-| ITG (itch.io) | https://itch.io/profile/hongphong214365 |
-| X (Twitter) | https://x.com/hongphong214365 |
-| GitHub | https://github.com/hongphong214365 |
-
-### Form liên hệ
-- Formspree endpoint: `https://formspree.io/f/xpwrwbjg` ← **cần cập nhật ID thật**
-- Gmail: `hongphong0909.13@gmail.com`
-- AJAX submit (không reload trang), có thông báo thành công/thất bại qua `aria-live`
-
-### README fetch
-- API: `https://api.github.com/repos/hongphong214365/Du-an/readme`
-- Accept header: `application/vnd.github.v3.raw` (trả về Markdown thuần)
-- Fallback: link trực tiếp đến GitHub nếu fetch thất bại
-
-### Cấu trúc file
-```
-hongphong214365.github.io/
-├── index.html          ← Homepage (tái cấu trúc hoàn toàn)
-├── style.css           ← Toàn bộ CSS, không pha vào HTML
-├── main.js             ← Toàn bộ JS, không pha vào HTML
-├── tasks.md            ← Báo cáo này
-├── 404.html
-├── robots.txt
-├── sitemap.xml
-└── project/
-    ├── agentsTelegram.html   ← Đã tách CSS
-    └── Voice-Assistant.html  ← Đã tách CSS
-```
+- Danh sách mạng xã hội: Reddit `reddit.com/user/hongphong214365`; Facebook `facebook.com/hongphong214365`; TikTok `@hongphong214365`; itch.io `itch.io/profile/hongphong214365`; X `x.com/hongphong214365`; GitHub `github.com/hongphong214365`.
+- Form liên hệ cần ứng dụng email được cấu hình trên thiết bị của người gửi. Đây là cách gửi không cần tài khoản dịch vụ form hoặc endpoint riêng.
+- README dùng GitHub API `https://api.github.com/repos/hongphong214365/Du-an/readme` và hiển thị trực tiếp trên trang; liên kết GitHub vẫn có sẵn làm dự phòng.

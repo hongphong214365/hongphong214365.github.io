@@ -140,10 +140,11 @@
                 </ul>
 
                 <!-- README từ GitHub API (render động) -->
-                <div class="readme-section" aria-live="polite">
+                <div class="readme-section">
                     <h2 id="readme-heading">📄 README dự án Du-an</h2>
                     <p class="section-desc">Nội dung được tải trực tiếp từ GitHub, không cần chuyển trang.</p>
-                    <div id="readme-content" class="readme-content" aria-labelledby="readme-heading">
+                    <p id="readme-status" class="visually-hidden" role="status" aria-live="polite">Đang tải README.</p>
+                    <div id="readme-content" class="readme-content" aria-labelledby="readme-heading" aria-busy="true">
                         <p class="muted">Đang tải nội dung README...</p>
                     </div>
                     <p class="readme-fallback">
@@ -185,9 +186,8 @@
                 <h2 id="form-heading">Gửi tin nhắn</h2>
                 <form
                     id="contact-form"
-                    action="https://formspree.io/f/xpwrwbjg"
+                    action="mailto:hongphong0909.13@gmail.com"
                     method="POST"
-                    novalidate
                     aria-describedby="form-status"
                 >
                     <div class="form-group">
@@ -198,8 +198,7 @@
                             name="name"
                             required
                             autocomplete="name"
-                            placeholder="Nguyễn Văn A"
-                            aria-required="true">
+                            placeholder="Nguyễn Văn A">
                     </div>
 
                     <div class="form-group">
@@ -210,8 +209,7 @@
                             name="email"
                             required
                             autocomplete="email"
-                            placeholder="email@example.com"
-                            aria-required="true">
+                            placeholder="email@example.com">
                     </div>
 
                     <div class="form-group">
@@ -221,12 +219,11 @@
                             name="message"
                             rows="4"
                             required
-                            placeholder="Xin chào Hồng Phong..."
-                            aria-required="true"></textarea>
+                            placeholder="Xin chào Hồng Phong..."></textarea>
                     </div>
 
                     <!-- honeypot chống spam -->
-                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true">
+                    <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                     <button type="submit" class="btn">Gửi tin nhắn</button>
 
@@ -237,7 +234,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2025 Hồng Phong · Tất cả nội dung thuộc về tác giả · Trang web thân thiện với trình đọc màn hình NVDA</p>
+            <p>© 2026 Hồng Phong · Trang cá nhân về Python, tự động hóa và trợ năng.</p>
         </div>
     </footer>
 
