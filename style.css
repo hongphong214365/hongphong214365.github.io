@@ -772,6 +772,10 @@ html { scroll-padding-top: 5rem; }
 .readme-content pre { padding-top: 3rem; }
 .code-block { padding-top: 3rem; }
 .readme-content ul, .readme-content ol { padding-left: 1.5rem; }
+.project-readme-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.project-readme-panel { margin-top: 1.25rem; }
+.project-readme-panel[hidden] { display: none; }
+.project-readme-panel .readme-fallback { margin-top: 0.75rem; }
 .site-footer { margin-top: 0; padding-top: 3rem; }
 .footer-inner { padding-bottom: 2rem; }
 .form-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }

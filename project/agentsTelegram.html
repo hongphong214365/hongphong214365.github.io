@@ -176,11 +176,21 @@ export TELEGRAM_ADMIN_ID="123456789"</code>
             <section aria-labelledby="docs-heading">
                 <h2 id="docs-heading">📜 Tài Liệu Chi Tiết</h2>
                 <p>
-                    Xem tài liệu đầy đủ tại
-                    <a href="https://github.com/hongphong214365/agentsTelegram/blob/main/README.md" target="_blank" rel="noopener">
-                        README trên GitHub
-                    </a>.
+                    Dùng nút “Xem chi tiết” ở cuối nội dung để đọc README ngay trên trang.
                 </p>
+            </section>
+
+            <section class="project-readme-section" aria-labelledby="agents-readme-heading">
+                <h2 id="agents-readme-heading">README đầy đủ</h2>
+                <p class="section-desc">Đọc README của agentsTelegram ngay tại đây mà không cần rời trang.</p>
+                <button class="btn project-readme-toggle" type="button" aria-expanded="false" aria-controls="agents-readme-panel" data-repository="agentsTelegram">
+                    Xem chi tiết
+                </button>
+                <div id="agents-readme-panel" class="project-readme-panel" hidden>
+                    <p class="readme-status visually-hidden" role="status" aria-live="polite"></p>
+                    <div class="readme-content" aria-busy="false"></div>
+                    <p class="readme-fallback" hidden></p>
+                </div>
             </section>
 
         </main>

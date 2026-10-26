@@ -117,11 +117,9 @@
     block.appendChild(button);
   }
 
-  function loadReadme() {
-    var container = document.getElementById('readme-content');
-    if (!container) return;
-    var status = document.getElementById('readme-status');
-    fetch('https://api.github.com/repos/hongphong214365/Du-an/readme', {
+  function loadReadme(repository, container, status, fallback) {
+    var apiUrl = 'https://api.github.com/repos/hongphong214365/' + encodeURIComponent(repository) + '/readme';
+    return fetch(apiUrl, {
       headers: { Accept: 'application/vnd.github.v3.raw' }
     }).then(function (response) {
       if (!response.ok) throw new Error('README không khả dụng');
@@ -131,18 +129,49 @@
       container.querySelectorAll('pre').forEach(addCopyButton);
       container.setAttribute('aria-busy', 'false');
       if (status) status.textContent = 'README đã tải xong.';
+      return true;
     }).catch(function () {
-      container.textContent = '';
-      var message = document.createElement('p');
-      message.className = 'muted';
-      message.append('Hiện chưa tải được README. ');
-      var link = document.createElement('a');
-      link.href = 'https://github.com/hongphong214365/Du-an';
-      link.textContent = 'Mở repository Du-an trên GitHub';
-      message.appendChild(link);
-      container.appendChild(message);
+      container.textContent = 'README hiện chưa tải được.';
       container.setAttribute('aria-busy', 'false');
+      if (fallback) {
+        fallback.hidden = false;
+        fallback.textContent = '';
+        fallback.append('Không tải được README. ');
+        var link = document.createElement('a');
+        link.href = 'https://github.com/hongphong214365/' + encodeURIComponent(repository);
+        link.textContent = 'Mở repository trên GitHub';
+        fallback.appendChild(link);
+      }
       if (status) status.textContent = 'Không tải được README. Đã hiển thị liên kết mở GitHub.';
+      return false;
+    });
+  }
+
+  function initProjectReadmes() {
+    document.querySelectorAll('.project-readme-toggle').forEach(function (button) {
+      var panel = document.getElementById(button.getAttribute('aria-controls'));
+      if (!panel) return;
+      var content = panel.querySelector('.readme-content');
+      var status = panel.querySelector('.readme-status');
+      var fallback = panel.querySelector('.readme-fallback');
+      var loaded = false;
+      var loading = false;
+
+      button.addEventListener('click', function () {
+        var isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!isExpanded));
+        panel.hidden = isExpanded;
+        if (isExpanded) return;
+        if (!loaded && !loading) {
+          loading = true;
+          content.setAttribute('aria-busy', 'true');
+          status.textContent = 'Đang tải README.';
+          loadReadme(button.getAttribute('data-repository'), content, status, fallback).then(function (success) {
+            loaded = success;
+            loading = false;
+          });
+        }
+      });
     });
   }
 
@@ -166,8 +195,11 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    loadReadme();
-    document.querySelectorAll('.code-block, pre').forEach(addCopyButton);
+    document.querySelectorAll('.code-block, pre').forEach(function (block) {
+      if (block.tagName === 'PRE' && block.closest('.code-block')) return;
+      addCopyButton(block);
+    });
+    initProjectReadmes();
     initContactForm();
   });
 }());
